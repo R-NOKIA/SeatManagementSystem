@@ -26,10 +26,10 @@
         <slf4j.version>1.7.7</slf4j.version>
         <logback.version>1.1.3</logback.version>
         <log4j.version>1.2.17</log4j.version>
-        <!--cxf 版本-->
-        <cxf.version>2.7.7</cxf.version>
+
 
     </properties>
+
 
     <!--项目依赖-->
     <dependencies>
@@ -113,8 +113,6 @@
         </dependency>
 
 
-
-
         <!-- mybatis核心包 -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -160,8 +158,6 @@
             <artifactId>druid</artifactId>
             <version>1.1.10</version>
         </dependency>
-
-
 
 
         <!-- 日志文件管理包 -->
@@ -247,11 +243,30 @@
         </dependency>
 
 
-
     </dependencies>
 
     <build>
         <finalName>SeatManagement</finalName>
+        <resources>
+            <!--防止mybatis中xml文件丢失-->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
